@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sidekiq-crypt (0.1.1)
+    sidekiq-crypt (0.1.1.pre.overwrite.pre.encryption)
       sidekiq (~> 5.0)
 
 GEM
@@ -52,7 +52,7 @@ GEM
     ast (2.4.0)
     builder (3.2.3)
     concurrent-ruby (1.1.5)
-    connection_pool (2.2.2)
+    connection_pool (2.2.3)
     crass (1.0.5)
     erubi (1.9.0)
     globalid (0.4.2)
@@ -79,7 +79,7 @@ GEM
     parser (2.7.1.0)
       ast (~> 2.4.0)
     rack (2.0.7)
-    rack-protection (2.0.7)
+    rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -109,7 +109,7 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (13.0.1)
-    redis (4.1.3)
+    redis (4.1.4)
     rexml (3.2.4)
     rubocop (0.81.0)
       jaro_winkler (~> 1.5.1)
@@ -120,11 +120,11 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
     ruby-progressbar (1.10.1)
-    sidekiq (5.2.7)
+    sidekiq (5.2.9)
       connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
+      rack (~> 2.0)
       rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+      redis (>= 3.3.5, < 4.2)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
