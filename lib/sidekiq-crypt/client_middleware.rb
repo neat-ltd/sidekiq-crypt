@@ -12,7 +12,8 @@ module Sidekiq
       end
 
       def call(worker_class, job, _queue, _redis_pool)
-        if encrypted_worker?(worker_class, job)
+        existing_header = read_encryption_header(job['jid'])
+        if encrypted_worker?(worker_class, job) && existing_header.nil?
           @iv = Cipher.random_iv
           traverser.traverse!(job['args'], encryption_proc)
           write_encryption_header_to_redis(job['jid'], encrypted_keys)
@@ -24,6 +25,12 @@ module Sidekiq
       private
 
       attr_reader :configuration, :encrypted_keys
+
+      def read_encryption_header(job_id)
+        Sidekiq.redis do |conn|
+          conn.get("sidekiq-crpyt-header:#{job_id}")
+        end
+      end
 
       def encrypted_worker?(worker_class, job)
         @worker_klass = worker_class(worker_class, job)
